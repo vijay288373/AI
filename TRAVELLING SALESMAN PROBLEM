@@ -1,0 +1,18 @@
+import itertools
+
+def tsp(dist):
+    cities = list(range(len(dist)))
+    best = float('inf')
+    for p in itertools.permutations(cities[1:]):
+        path = [0] + list(p) + [0]
+        cost = sum(dist[path[i]][path[i+1]] for i in range(len(cities)))
+        best = min(best, cost)
+    return best
+
+dist = [
+    [0, 10, 15, 20],
+    [10, 0, 35, 25],
+    [15, 35, 0, 30],
+    [20, 25, 30, 0]
+]
+print("Minimum cost:", tsp(dist))
