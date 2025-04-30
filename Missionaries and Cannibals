@@ -1,0 +1,12 @@
+def valid(s): m1,c1,m2,c2,b=s; return all(x>=0 and (x==0 or m>=c) for m,c,x in [(m1,c1,m1),(m2,c2,m2)])
+def bfs():
+    q=[((3,3,0,0,1),[])]; seen=set()
+    for s,p in q:
+        if s in seen: continue
+        seen.add(s)
+        if s[:4]==(0,0,3,3): return p+[s]
+        for m,c in [(1,0),(0,1),(1,1),(2,0),(0,2)]:
+            if s[4]: ns=(s[0]-m,s[1]-c,s[2]+m,s[3]+c,0)
+            else: ns=(s[0]+m,s[1]+c,s[2]-m,s[3]-c,1)
+            if valid(ns): q.append((ns,p+[s]))
+print(*bfs(), sep="\n")
