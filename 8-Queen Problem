@@ -1,0 +1,6 @@
+def solve(r=0, b=[]):
+    if r==8: print(b); return
+    for c in range(8):
+        if all(c!=b[i] and abs(c-b[i])!=r-i for i in range(r)):
+            solve(r+1, b+[c])
+solve()
