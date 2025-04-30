@@ -1,0 +1,5 @@
+def vacuum(loc, s):
+    if s[loc]: print(f"Clean {loc}"); s[loc]=0
+    loc2 = 'B' if loc=='A' else 'A'
+    if s[loc2]: print(f"Move to {loc2}, Clean"); s[loc2]=0
+vacuum('A', {'A':1, 'B':1})
