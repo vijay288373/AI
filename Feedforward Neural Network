@@ -1,0 +1,18 @@
+import numpy as np
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([[0], [1], [1], [0]])
+
+np.random.seed(1)
+weights = 2 * np.random.random((2, 1)) - 1
+
+for _ in range(10000):
+    z = np.dot(X, weights)
+    output = sigmoid(z)
+    error = y - output
+    weights += np.dot(X.T, error * output * (1 - output))
+
+print("Predicted output:\n", sigmoid(np.dot(X, weights)))
