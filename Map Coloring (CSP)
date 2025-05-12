@@ -1,0 +1,18 @@
+from constraint import *
+
+problem = Problem()
+colors = ["Red", "Green", "Blue"]
+regions = ["WA", "NT", "SA", "Q", "NSW", "V", "T"]
+
+for region in regions:
+    problem.addVariable(region, colors)
+
+adjacent = [("WA", "NT"), ("WA", "SA"), ("NT", "SA"), ("NT", "Q"),
+            ("SA", "Q"), ("SA", "NSW"), ("SA", "V"), ("Q", "NSW"),
+            ("NSW", "V")]
+
+for r1, r2 in adjacent:
+    problem.addConstraint(lambda a, b: a != b, (r1, r2))
+
+solution = problem.getSolution()
+print(solution)
