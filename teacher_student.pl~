@@ -1,0 +1,7 @@
+% Facts
+student_teacher('Alice', 'Mr. Johnson', 'MATH101').
+student_teacher('Bob', 'Ms. Smith', 'ENG202').
+
+% Rule to find teacher for a student and subject
+find_teacher(Student, Teacher, SubjectCode) :-
+    student_teacher(Student, Teacher, SubjectCode).

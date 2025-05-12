@@ -1,0 +1,17 @@
+% Base case: the sum of integers from 1 to 0 is 0.
+sum_integers(0, 0).
+
+% Recursive case: sum of integers from 1 to N is N + sum of integers from 1 to N-1.
+sum_integers(N, Sum) :-
+    N > 0,
+    N1 is N - 1,
+    sum_integers(N1, Sum1),
+    Sum is N + Sum1.
+
+% Predicate to sum integers from 1 to N and display the result.
+sum_and_display(N) :-
+    sum_integers(N, Sum),
+    format('The sum of integers from 1 to ~d is: ~d~n', [N, Sum]).
+
+% To run the program, you can query like this:
+% ?- sum_and_display(N).
